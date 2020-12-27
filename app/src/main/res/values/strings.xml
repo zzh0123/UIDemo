@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">UIDemo</string>
+
+    <!-- 控件demo名称-->
+    <string name="view_pager_demo">viewPagerDemo</string>
+    <string name="view_pager_show_view1">viewPagerShowView1</string>
+    <string name="view_pager_show_view">viewPagerShowView</string>
+
+    <string name="back_right_black">&#xe658;</string>
 </resources>

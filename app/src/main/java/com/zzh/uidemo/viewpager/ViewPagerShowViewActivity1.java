@@ -14,11 +14,20 @@ import com.zzh.uidemo.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class ViewPagerActivity extends AppCompatActivity implements View.OnClickListener{
+/**
+ * Author: zzhh
+ * Date: 2020/12/14 21:51
+ * Description: viewpager示例
+ * 1.PagerAdapter加载view
+ * 2.
+ *
+ *
+ * 参考博客：https://blog.csdn.net/wangjinyu501/article/details/8169924
+ *
+ */
+public class ViewPagerShowViewActivity1 extends AppCompatActivity implements View.OnClickListener{
 
 //    @BindView(R.id.viewPager1)
     ViewPager viewPager1;
@@ -37,7 +46,7 @@ public class ViewPagerActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pager);
+        setContentView(R.layout.activity_view_pager_show_view1);
         ButterKnife.bind(this);
         initView();
     }
