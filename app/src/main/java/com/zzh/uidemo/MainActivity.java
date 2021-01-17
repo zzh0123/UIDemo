@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zzh.uidemo.lineIndicator.LineIndicatorActivity;
 import com.zzh.uidemo.viewpager.ViewPagerDemoActivity;
 import com.zzh.uidemo.viewpager.ViewPagerShowViewActivity1;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData(){
         mDemoBeanList.add(new DemoBean(getString(R.string.view_pager_demo), ViewPagerDemoActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.line_indicator_demo), LineIndicatorActivity.class));
     }
 
 }
