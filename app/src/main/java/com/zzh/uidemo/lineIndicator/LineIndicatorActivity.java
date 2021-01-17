@@ -14,6 +14,12 @@ import com.zzh.uidemo.adapter.LineIndicatorAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Author: zzhh
+ * Date: 2021/01/17 21:51
+ * Description: recyclerview 横线指示器
+ * 参考博客：https://www.jb51.net/article/181536.htm
+ */
 public class LineIndicatorActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
