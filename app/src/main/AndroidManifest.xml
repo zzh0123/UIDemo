@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".lineIndicator.LineIndicatorActivity"></activity>
+        <activity android:name=".dialog.CustomDialogActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".shadow.ShadowActivity" />
+        <activity android:name=".scroll.UpStrokeGradientActivity" />
+        <activity android:name=".lineIndicator.LineIndicatorActivity" />
         <activity android:name=".viewpager.ViewPagerDemoActivity" />
         <activity android:name=".viewpager.ViewPagerShowViewActivity" />
         <activity android:name=".viewpager.ViewPagerShowViewActivity1" />

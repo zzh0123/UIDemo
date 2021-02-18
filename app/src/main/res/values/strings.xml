@@ -7,8 +7,11 @@
     <string name="view_pager_show_view">viewPagerShowView</string>
     <string name="line_indicator_demo">lineIndicatorDemo</string>
 
-    <string name="back_right_black">&#xe658;</string>
+    <string name="up_strokeGradient_demo">UpStrokeGradientDemo</string>
 
+    <string name="comment_dialog">CommentDialogDemo</string>
+
+    <string name="back_right_black">&#xe658;</string>
 
 
 </resources>

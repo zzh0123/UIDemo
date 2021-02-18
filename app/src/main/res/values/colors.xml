@@ -4,9 +4,22 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="white">#ffffff</color>
     <color name="blue">#03A9F4</color>
+    <color name="c_4D4C4C">#4D4C4C</color>
     <color name="c_cccccc">#cccccc</color>
     <color name="c_666666">#666666</color>
     <color name="c_999999">#999999</color>
     <color name="c_FF9800">#FF9800</color>
-</resources>
+    <color name="c_272848">#272848</color>
+    <color name="color_F5F5F7">#F5F5F7</color>
+    <color name="color_1677FF_40">#661677FF</color>
+    <color name="color_06A7FF_40">#6606A7FF</color>
+    <color name="color_1677FF">#1677FF</color>
+    <color name="color_06A7FF">#06A7FF</color>
+    <color name="default_shadow_color">#88757575</color>
+    <color name="shadow_view_foreground_color_light">#33ffffff</color>
+    <color name="shadow_view_default_shadow_color">#DCDDE0</color>
+    <color name="shadow_view_foreground_color_dark">#1f000000</color>
+    <color name="color_2a000000">#2a000000</color>
+    </resources>
