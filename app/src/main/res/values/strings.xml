@@ -9,7 +9,8 @@
 
     <string name="up_strokeGradient_demo">UpStrokeGradientDemo</string>
 
-    <string name="comment_dialog">CommentDialogDemo</string>
+    <string name="comment_dialog_demo">CommentDialogDemo</string>
+    <string name="recyclerview_demo">RecyclerviewDemo</string>
 
     <string name="back_right_black">&#xe658;</string>
 
