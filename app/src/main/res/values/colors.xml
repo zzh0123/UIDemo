@@ -22,4 +22,9 @@
     <color name="shadow_view_default_shadow_color">#DCDDE0</color>
     <color name="shadow_view_foreground_color_dark">#1f000000</color>
     <color name="color_2a000000">#2a000000</color>
-    </resources>
+    <color name="c_F5F6FA">#F5F6FA</color>
+    <color name="c_F9F9FC">#F9F9FC</color>
+    <color name="c_B0B3BE">#B0B3BE</color>
+    <color name="c_E8ECF4">#E8ECF4</color>
+    <color name="c_5660FF">#5660FF</color>
+</resources>

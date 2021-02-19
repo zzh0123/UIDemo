@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.zzh.uidemo.R;
-import com.zzh.uidemo.adapter.RecyclerDemoAdapter;
+import com.zzh.uidemo.recyclerview.adapter.RecyclerDemoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class RecyclerviewActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initData(){
-        String imgUrl = "http://mmbiz.qpic.cn/mmbiz/PwIlO51l7wuFyoFwAXfqPNETWCibjNACIt6ydN7vw8LeIwT7IjyG3eeribmK4rhibecvNKiaT2qeJRIWXLuKYPiaqtQ/0";
+        String imgUrl = "http://www.baidu.com/img/bdlogo.png";
         for (int i = 0; i < 10; i++){
             TestBean testBean = (new TestBean("" + i, imgUrl));
             mTestBeanList.add(testBean);

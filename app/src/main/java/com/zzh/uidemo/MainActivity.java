@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.zzh.uidemo.dialog.CustomDialogActivity;
 import com.zzh.uidemo.lineIndicator.LineIndicatorActivity;
+import com.zzh.uidemo.recyclerview.RecyclerPlusReduceActivity;
 import com.zzh.uidemo.recyclerview.RecyclerviewActivity;
 import com.zzh.uidemo.scroll.UpStrokeGradientActivity;
 import com.zzh.uidemo.viewpager.ViewPagerDemoActivity;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         mDemoBeanList.add(new DemoBean(getString(R.string.up_strokeGradient_demo), UpStrokeGradientActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.comment_dialog_demo), CustomDialogActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.recyclerview_demo), RecyclerviewActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.recycler_plus_reduce_demo), RecyclerPlusReduceActivity.class));
     }
 
 }
