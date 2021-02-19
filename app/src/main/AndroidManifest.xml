@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".recyclerview.RecyclerPlusReduceActivity"></activity>
+        <activity android:name=".choose.ChooseAreaActivity"></activity>
+        <activity android:name=".constraintLayout.ConstraintLayoutActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerPlusReduceActivity" />
         <activity android:name=".recyclerview.RecyclerviewActivity" />
         <activity
             android:name=".dialog.CustomDialogActivity"

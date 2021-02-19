@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".constraintLayout.ConstraintLayoutActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/c_f6f6f6"
+            app:layout_constraintBottom_toBottomOf="@+id/view_line_messge_board_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_circle"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_circle_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_dateCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="2020-06-04 16:14:28"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_circle"
+            app:layout_constraintLeft_toRightOf="@+id/tv_circle"
+            app:layout_constraintTop_toTopOf="@+id/tv_circle" />
+
+        <TextView
+            android:id="@+id/tv_realName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="管理员一号"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_dateCreated"
+            app:layout_constraintTop_toTopOf="@+id/tv_dateCreated" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="18dp"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/blue"
+            android:textSize="13sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_realName" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="36dp"
+            android:text="记得发进来发家弗拉基法记得发进来发家弗拉基法记得发进来发家弗拉基法记得发进来发家弗拉基法记得发进来发家弗拉基法记得发进来发家弗拉基法记得发进来发家弗拉基法"
+            android:textColor="@color/c_272848"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_dateCreated"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dateCreated" />
+
+        <View
+            android:id="@+id/view_line_messge_board_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/c_f6f6f6"
+            app:layout_constraintStart_toStartOf="@+id/tv_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/constraintLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_circle2"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="13dp"
+            android:background="@mipmap/complete"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_opinion_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="--"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/c_666666"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_circle2"
+            app:layout_constraintLeft_toRightOf="@+id/tv_circle2"
+            app:layout_constraintTop_toTopOf="@+id/tv_circle2"/>
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020年4月1日15:25:33"
+            android:textColor="@color/c_999999"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_opinion_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_opinion_title" />
+
+        <LinearLayout
+            android:id="@+id/ll_remark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_f5f7f9"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="10dp">
+            <TextView
+                android:id="@+id/tv_role_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="有时候默认的浅灰色的分割线并不能满足我们的要求，这时我们就需要自己“写”一条分割线了，那应该怎么写呢？打开DividerItemDecoration看看它的源码，有这么一个函数"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/c_666666"/>
+
+            <TextView
+                android:id="@+id/tv_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="--"
+                android:textSize="12sp"
+                android:textColor="@color/c_999999" />
+        </LinearLayout>
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/ll_remark"
+            app:layout_constraintLeft_toLeftOf="@+id/ll_remark"/>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="3dp"
+            android:layout_height="0dp"
+            android:background="@color/c_f6f6f6"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_circle2"
+            app:layout_constraintRight_toRightOf="@+id/tv_circle2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_circle2"
+            app:layout_constraintBottom_toBottomOf="@+id/space"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

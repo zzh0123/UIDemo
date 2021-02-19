@@ -1,6 +1,7 @@
 package com.zzh.uidemo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.zzh.uidemo.choose.ChooseAreaActivity;
 import com.zzh.uidemo.dialog.CustomDialogActivity;
 import com.zzh.uidemo.lineIndicator.LineIndicatorActivity;
 import com.zzh.uidemo.recyclerview.RecyclerPlusReduceActivity;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView(){
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        //添加Android自带的分割线  https://www.jianshu.com/p/e68a0b5fd383
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         adapter = new DemoAdapter(mDemoBeanList);
         adapter.setOnItemClickListener(new DemoAdapter.OnItemClickListener() {
             @Override
@@ -61,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         mDemoBeanList.add(new DemoBean(getString(R.string.comment_dialog_demo), CustomDialogActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.recyclerview_demo), RecyclerviewActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.recycler_plus_reduce_demo), RecyclerPlusReduceActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.choose_area_demo), ChooseAreaActivity.class));
     }
 
 }
