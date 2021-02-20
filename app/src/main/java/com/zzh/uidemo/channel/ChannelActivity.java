@@ -3,6 +3,7 @@ package com.zzh.uidemo.channel;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -29,6 +30,15 @@ public class ChannelActivity extends AppCompatActivity implements  EasyPermissio
 
         channel = PackageUtil.getAppMetaData(this, "channel");
         Log.i("zzz1", "channel " + channel);
+
+        if (!EasyPermissions.hasPermissions(ChannelActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            // ask permission with ReasonOfPermission, RequestCord and PermissionName
+//            mFileUrl = fileUrl;
+            EasyPermissions.requestPermissions(ChannelActivity.this, "需要存储权限", 1, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//                LogUtil.i("zzz1", "requestPermissions ");
+        } else {
+//            showFile(fileUrl);
+        }
 
     }
 
