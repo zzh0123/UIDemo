@@ -17,7 +17,7 @@ import com.zzh.uidemo.glide.Glide;
 
 import java.util.List;
 
-import bean.TestBean;
+import com.zzh.uidemo.bean.TestBean;
 
 /**
  * Author: zzhh

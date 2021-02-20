@@ -19,7 +19,7 @@ import com.zzh.uidemo.adapter.LineIndicatorAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.DpUtil;
+import com.zzh.uidemo.utils.DpUtil;
 
 public class UpStrokeGradientActivity extends AppCompatActivity {
 

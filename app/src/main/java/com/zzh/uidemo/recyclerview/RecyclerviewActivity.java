@@ -15,7 +15,7 @@ import com.zzh.uidemo.recyclerview.adapter.RecyclerDemoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.TestBean;
+import com.zzh.uidemo.bean.TestBean;
 
 public class RecyclerviewActivity extends AppCompatActivity implements View.OnClickListener{
 

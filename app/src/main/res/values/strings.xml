@@ -13,6 +13,8 @@
     <string name="recyclerview_demo">RecyclerviewDemo</string>RecyclerPlusReduceActivity
     <string name="recycler_plus_reduce_demo">RecyclerPlusReduceDemo</string>
     <string name="choose_area_demo">ChooseAreaDemo</string>
+    <string name="channel_demo">ChannelDemo</string>
+    <string name="autoPollRecyclerView_demo">AutoPollRecyclerViewDemo</string>
 
     <string name="back_right_black">&#xe658;</string>
 

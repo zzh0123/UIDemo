@@ -2,8 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zzh.uidemo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" /> <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 允许程序访问额外的定位提供者指令获取模拟定位信息 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 华为手机安装完apk打开完成界面需要这个权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 这个权限用于允许程序在手机屏幕关闭后后台进程仍然运行 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 接受开机广播自启动 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +30,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".choose.ChooseAreaActivity"></activity>
-        <activity android:name=".constraintLayout.ConstraintLayoutActivity"></activity>
+        <activity android:name=".recyclerview.AutoPollRecyclerViewActivity" />
+
+        <meta-data
+            android:name="channel"
+            android:value="${CHANNEL_VALUE}" />
+
+        <activity android:name=".channel.ChannelActivity" />
+        <activity android:name=".choose.ChooseAreaActivity" />
+        <activity android:name=".constraintLayout.ConstraintLayoutActivity" />
         <activity android:name=".recyclerview.RecyclerPlusReduceActivity" />
         <activity android:name=".recyclerview.RecyclerviewActivity" />
         <activity

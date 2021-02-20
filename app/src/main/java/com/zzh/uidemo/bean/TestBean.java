@@ -1,4 +1,4 @@
-package bean;
+package com.zzh.uidemo.bean;
 
 public class TestBean {
 

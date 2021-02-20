@@ -18,6 +18,29 @@ android {
         }
     }
 
+    // 多渠道
+    productFlavors {
+        small {
+            manifestPlaceholders = [CHANNEL_VALUE: "small"]
+        }
+        big {
+            manifestPlaceholders = [CHANNEL_VALUE: "big"]
+        }
+
+        projectSmall {
+            manifestPlaceholders = [CHANNEL_VALUE: "projectSmall"]
+        }
+        projectBig {
+            manifestPlaceholders = [CHANNEL_VALUE: "projectBig"]
+        }
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+    // 多维度打包或者叫版本差异化打包
+    flavorDimensions "every"
+
     // Butterknife requires Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -48,4 +71,8 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4' // 仅支持AndroidX
 
     implementation 'com.google.code.gson:gson:2.8.6' // gson
+
+    // https://github.com/googlesamples/easypermissions
+    // For developers using AndroidX in their applications
+    implementation 'pub.devrel:easypermissions:3.0.0'
 }

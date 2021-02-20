@@ -1,4 +1,4 @@
-package utils;
+package com.zzh.uidemo.utils;
 
 import android.content.Context;
 
