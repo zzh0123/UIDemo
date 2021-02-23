@@ -10,6 +10,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -77,4 +79,8 @@ dependencies {
     implementation 'pub.devrel:easypermissions:3.0.0'
 
     implementation files('libs/tbs_sdk_thirdapp_v4.3.0.39_43939_sharewithdownloadwithfile_withoutGame_obfs_20200713_223411.jar')
+
+    implementation 'androidx.multidex:multidex:2.0.0' //
+
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5' // MQTT
 }
