@@ -18,6 +18,7 @@ import com.zzh.uidemo.recyclerview.AutoPollRecyclerViewActivity;
 import com.zzh.uidemo.recyclerview.NestRecyclerViewActivity;
 import com.zzh.uidemo.recyclerview.RecyclerPlusReduceActivity;
 import com.zzh.uidemo.recyclerview.RecyclerviewActivity;
+import com.zzh.uidemo.recyclerview.TypeRecyclerViewActivity;
 import com.zzh.uidemo.scroll.UpStrokeGradientActivity;
 import com.zzh.uidemo.viewpager.ViewPagerDemoActivity;
 import com.zzh.uidemo.viewpager.ViewPagerShowViewActivity1;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         mDemoBeanList.add(new DemoBean(getString(R.string.channel_demo), ChannelActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.autoPollRecyclerView_demo), AutoPollRecyclerViewActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.nestRecyclerView_demo), NestRecyclerViewActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.TypeRecyclerViewdemo), TypeRecyclerViewActivity.class));
     }
 
 }

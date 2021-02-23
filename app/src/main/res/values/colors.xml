@@ -33,4 +33,8 @@
     <color name="c_E5E5E5">#E5E5E5</color>
     <color name="c_f8f8f8">#f8f8f8</color>
     <color name="c_E5E7FB">#E5E7FB</color>
+    <color name="c_606266">#606266</color>
+    <color name="c_F4F7FC">#F4F7FC</color>
+    <color name="c_909399">#909399</color>
+    <color name="transparent">#00000000</color>
 </resources>
