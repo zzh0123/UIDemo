@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/commenheight"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/back_black"
+            android:paddingLeft="@dimen/px59"
+            android:paddingTop="@dimen/space_10dp"
+            android:paddingBottom="@dimen/space_10dp"
+            android:scaleType="fitXY"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/px135"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/px52"
+            android:gravity="center"
+            android:paddingTop="@dimen/space_10dp"
+            android:paddingBottom="@dimen/space_10dp"
+            android:text="title"
+            android:textColor="@color/c_272848"
+            android:textSize="@dimen/textPx48"
+            android:textStyle="bold"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/commenheight"
+        android:layout_marginBottom="@dimen/px210">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:scrollbars="none" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_right"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:divider="@android:color/transparent"
+            android:scrollbars="none"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_all_check"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/px72"
+        android:paddingTop="@dimen/px24"
+        android:paddingRight="@dimen/T4"
+        android:paddingBottom="@dimen/px24">
+
+        <ImageView
+            android:id="@+id/iv_all_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/px9"
+            android:src="@mipmap/unchecked" />
+
+        <TextView
+            android:id="@+id/tv_all_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/px24"
+            android:layout_toRightOf="@+id/iv_all_check"
+            android:gravity="center"
+            android:text="全选"
+            android:textColor="@color/c_272848"
+            android:textSize="@dimen/middeltextsize" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_grey"
+            android:gravity="center"
+            android:paddingLeft="@dimen/px102"
+            android:paddingTop="@dimen/space_10dp"
+            android:paddingRight="@dimen/px102"
+            android:paddingBottom="@dimen/space_10dp"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/middeltextsize"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</FrameLayout>

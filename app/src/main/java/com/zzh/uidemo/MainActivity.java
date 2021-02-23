@@ -15,6 +15,7 @@ import com.zzh.uidemo.choose.ChooseAreaActivity;
 import com.zzh.uidemo.dialog.CustomDialogActivity;
 import com.zzh.uidemo.lineIndicator.LineIndicatorActivity;
 import com.zzh.uidemo.recyclerview.AutoPollRecyclerViewActivity;
+import com.zzh.uidemo.recyclerview.NestRecyclerViewActivity;
 import com.zzh.uidemo.recyclerview.RecyclerPlusReduceActivity;
 import com.zzh.uidemo.recyclerview.RecyclerviewActivity;
 import com.zzh.uidemo.scroll.UpStrokeGradientActivity;
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         mDemoBeanList.add(new DemoBean(getString(R.string.choose_area_demo), ChooseAreaActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.channel_demo), ChannelActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.autoPollRecyclerView_demo), AutoPollRecyclerViewActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.nestRecyclerView_demo), NestRecyclerViewActivity.class));
     }
 
 }

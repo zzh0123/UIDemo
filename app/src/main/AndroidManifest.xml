@@ -31,6 +31,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".recyclerview.NestRecyclerViewActivity"></activity>
         <activity android:name=".recyclerview.AutoPollRecyclerViewActivity" />
 
         <meta-data

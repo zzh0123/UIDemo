@@ -11,9 +11,15 @@ import android.view.WindowManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Util {
 
@@ -102,5 +108,58 @@ public class Util {
             }
         }
         return statusBarHeight;
+    }
+
+    public static Map<String, Object> transJsonToMap(String jsonStr) {
+        try {
+            if (null != jsonStr && !"".equals(jsonStr) && !"{}".equals(jsonStr) && !"null".equals(jsonStr)) {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                Iterator<String> keyItems = jsonObject.keys();
+                Map<String, Object> map = new HashMap<>();
+                String key, value;
+                while (keyItems.hasNext()) {
+                    key = keyItems.next();
+                    value = jsonObject.getString(key);
+                    map.put(key, value);
+                }
+                return map;
+            }
+        } catch (JSONException e) {
+            try {
+                Map<String, Object> map = new HashMap<>();
+                map.put("list", jsonStr);
+                return map;
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+            return null;
+        }
+        return null;
+    }
+    public static Map<String, Object> transResultJsonToMap(String jsonStr) {
+        try {
+            if (null != jsonStr && !"".equals(jsonStr) && !"{}".equals(jsonStr) && !"null".equals(jsonStr)) {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                Iterator<String> keyItems = jsonObject.keys();
+                Map<String, Object> map = new HashMap<>();
+                String key, value;
+                while (keyItems.hasNext()) {
+                    key = keyItems.next();
+                    value = jsonObject.getString(key);
+                    map.put(key, value);
+                }
+                return map;
+            }
+        } catch (JSONException e) {
+            try {
+                Map<String, Object> map = new HashMap<>();
+                map.put("randomCode", jsonStr);//返回json是乱码
+                return map;
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+            return null;
+        }
+        return null;
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/T4"
+        android:paddingTop="@dimen/px44"
+        android:paddingRight="@dimen/T4"
+        android:paddingBottom="@dimen/T1_magin">
+
+        <TextView
+            android:id="@+id/tv_name_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:textColor="@color/c_272848"
+            android:textSize="@dimen/smalltextsize"
+            android:textStyle="bold"
+            tools:text="现场勘察装备"/>
+
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/px9"
+            android:src="@mipmap/unchecked" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_inner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/T4"
+        android:layout_marginRight="@dimen/T4"
+        android:layout_marginBottom="@dimen/px59"/>
+</LinearLayout>

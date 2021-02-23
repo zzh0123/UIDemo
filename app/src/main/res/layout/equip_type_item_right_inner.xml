@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/T2">
+
+    <TextView
+        android:id="@+id/tv_name_inner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/c_272848"
+        android:textSize="@dimen/smalltextsize"
+        android:paddingTop="@dimen/px9"
+        android:paddingBottom="@dimen/px9"
+        android:paddingLeft="@dimen/T2"
+        android:paddingRight="@dimen/T2"
+        android:background="@drawable/bg_grey1"
+        tools:text="声纹鉴定装备"/>
+</LinearLayout>

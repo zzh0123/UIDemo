@@ -15,6 +15,7 @@
     <string name="choose_area_demo">ChooseAreaDemo</string>
     <string name="channel_demo">ChannelDemo</string>
     <string name="autoPollRecyclerView_demo">AutoPollRecyclerViewDemo</string>
+    <string name="nestRecyclerView_demo">NestRecyclerViewDemo</string>
 
     <string name="back_right_black">&#xe658;</string>
 
