@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/px16"
         android:textColor="@color/c_606266"
-        android:textSize="@dimen/textSp7"
+        android:textSize="7sp"
         app:layout_constraintLeft_toRightOf="@+id/tv_name"
         app:layout_constraintTop_toTopOf="@+id/tv_name"
         app:layout_constraintBottom_toBottomOf="@+id/tv_name"
@@ -46,7 +46,7 @@
         android:id="@+id/tv_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp4_5"
+        android:layout_marginTop="4.5dp"
         android:text=""
         android:textColor="@color/c_606266"
         android:textSize="@dimen/textSp8"
@@ -70,8 +70,8 @@
         android:paddingLeft="@dimen/space_10dp">
         <ImageView
             android:id="@+id/iv_like"
-            android:layout_width="@dimen/dp9_8"
-            android:layout_height="@dimen/dp9_8"
+            android:layout_width="9.8dp"
+            android:layout_height="9.8dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/like1" />
 
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textColor="@color/c_909399"
-            android:textSize="@dimen/textSp7"
+            android:textSize="7sp"
             tool:text="20"
             android:layout_marginLeft="@dimen/px9"
             android:layout_gravity="center_vertical"/>

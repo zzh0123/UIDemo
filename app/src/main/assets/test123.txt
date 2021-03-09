@@ -1,0 +1,98 @@
+{
+	"success": true,
+	"data": {
+		"treeId": "c99ea943748348ec8b5493063be035dd",
+		"treeName": "蜀山区XXX单位",
+		"parentId": null,
+		"parentName": "",
+		"childList": [{
+				"treeId": "a33e427ad0c842fa95e85da609925682",
+				"treeName": "桂林市公安局",
+				"parentId": "c99ea943748348ec8b5493063be035dd",
+				"parentName": "蜀山区XXX单位",
+				"childList": [{
+						"treeId": "a33e427ad0c842fa95e85da609925682",
+						"treeName": "桂林市公安局1",
+						"parentId": "c99ea943748348ec8b5493063be035dd",
+						"parentName": "桂林市公安局",
+						"childList": [
+
+						],
+						"treeType": "ORGAN",
+						"phone": null,
+						"sex": null,
+						"staffNum": 0,
+						"deptAdminNum": 0
+					},
+					{
+						"treeId": "a33e427ad0c842fa95e85da609925682",
+						"treeName": "桂林市公安局2",
+						"parentId": "c99ea943748348ec8b5493063be035dd",
+						"parentName": "桂林市公安局",
+						"childList": [
+
+						],
+						"treeType": "ORGAN",
+						"phone": null,
+						"sex": null,
+						"staffNum": 0,
+						"deptAdminNum": 0
+					}
+				],
+				"treeType": "ORGAN",
+				"phone": null,
+				"sex": null,
+				"staffNum": 0,
+				"deptAdminNum": 0
+			},
+			{
+				"treeId": "8ce6f943e7c74b9cb5b3ac1fc3aa03b0",
+				"treeName": "昆明市公安局轨道交通分局",
+				"parentId": "c99ea943748348ec8b5493063be035dd",
+				"parentName": "蜀山区XXX单位",
+				"childList": [{
+						"treeId": "a33e427ad0c842fa95e85da609925682",
+						"treeName": "昆明市公安局轨道交通分局1",
+						"parentId": "c99ea943748348ec8b5493063be035dd",
+						"parentName": "昆明市公安局轨道交通分局",
+						"childList": [
+
+						],
+						"treeType": "ORGAN",
+						"phone": null,
+						"sex": null,
+						"staffNum": 0,
+						"deptAdminNum": 0
+					},
+					{
+						"treeId": "a33e427ad0c842fa95e85da609925682",
+						"treeName": "昆明市公安局轨道交通分局2",
+						"parentId": "c99ea943748348ec8b5493063be035dd",
+						"parentName": "昆明市公安局轨道交通分局",
+						"childList": [
+
+						],
+						"treeType": "ORGAN",
+						"phone": null,
+						"sex": null,
+						"staffNum": 0,
+						"deptAdminNum": 0
+					}
+				],
+				"treeType": "ORGAN",
+				"phone": null,
+				"sex": null,
+				"staffNum": 0,
+				"deptAdminNum": 0
+			}
+		],
+		"treeType": "ORGAN",
+		"phone": null,
+		"sex": null,
+		"staffNum": 0,
+		"deptAdminNum": 0
+	},
+	"msg": "获取【组织-部门】树成功!",
+	"errCode": null,
+	"message": "获取【组织-部门】树成功!"
+}

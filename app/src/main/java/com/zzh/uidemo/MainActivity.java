@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.zzh.uidemo.channel.ChannelActivity;
 import com.zzh.uidemo.choose.ChooseAreaActivity;
 import com.zzh.uidemo.dialog.CustomDialogActivity;
+import com.zzh.uidemo.javatest.AlgorithmActivity;
 import com.zzh.uidemo.lineIndicator.LineIndicatorActivity;
 import com.zzh.uidemo.recyclerview.AutoPollRecyclerViewActivity;
 import com.zzh.uidemo.recyclerview.NestRecyclerViewActivity;
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mDemoBeanList.add(new DemoBean(getString(R.string.autoPollRecyclerView_demo), AutoPollRecyclerViewActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.nestRecyclerView_demo), NestRecyclerViewActivity.class));
         mDemoBeanList.add(new DemoBean(getString(R.string.TypeRecyclerViewdemo), TypeRecyclerViewActivity.class));
+        mDemoBeanList.add(new DemoBean(getString(R.string.AlgorithmDemo), AlgorithmActivity.class));
     }
 
 }

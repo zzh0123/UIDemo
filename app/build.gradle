@@ -95,5 +95,5 @@ dependencies {
     //开源日志库
     implementation 'com.orhanobut:logger:2.2.0'
 
-    implementation 'me.jessyan:autosize:1.2.1'
+//    implementation 'me.jessyan:autosize:1.2.1'
 }
