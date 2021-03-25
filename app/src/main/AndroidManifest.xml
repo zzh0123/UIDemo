@@ -32,7 +32,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".javatest.AlgorithmActivity"></activity>
+        <activity android:name=".androidtest.Activity1"></activity>
+        <activity android:name=".androidtest.AndroidTestActivity" />
+        <activity android:name=".javatest.JavaTestActivity" />
+        <activity android:name=".javatest.AlgorithmActivity" />
         <activity android:name=".recyclerview.TypeRecyclerViewActivity" />
         <activity android:name=".recyclerview.NestRecyclerViewActivity" />
         <activity android:name=".recyclerview.AutoPollRecyclerViewActivity" />

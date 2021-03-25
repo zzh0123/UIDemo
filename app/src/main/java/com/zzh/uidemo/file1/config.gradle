@@ -1,0 +1,124 @@
+package com.zzh.uidemo.file1
+
+ext {
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
+            versionCode      : APP_VERSION_CODE as int,
+            versionName      : APP_VERSION_NAME
+    ]
+
+    dependencies = [
+            supportV7   : 'androidx.appcompat:appcompat:1.0.0',
+            designV7    : 'com.google.android.material:material:1.0.0',
+            butterknife_compiler :'com.jakewharton:butterknife-compiler:10.1.0',
+            butterknife :'com.jakewharton:butterknife:10.1.0',
+            multidexV1  : 'androidx.multidex:multidex:2.0.0',
+            arouterApi  :'com.alibaba:arouter-api:1.4.1',
+            arouterCompiler :'com.alibaba:arouter-compiler:1.2.2',
+            zxing : 'com.google.zxing:core:3.3.0',
+            picasso : 'com.squareup.picasso:picasso:2.5.2',
+            gson : 'com.google.code.gson:gson:2.6.2',
+            glide : 'com.github.bumptech.glide:glide:3.7.0',
+            okhttp3 : 'com.squareup.okhttp3:okhttp:3.2.0',
+            okhttp3_logging_interceptor:'com.squareup.okhttp3:logging-interceptor:3.8.1',
+            ormlite : 'com.j256.ormlite:ormlite-android:4.48',
+            universalimageloader : 'com.nostra13.universalimageloader:universal-image-loader:1.9.3',
+            jpinyin : 'com.github.stuxuhai:jpinyin:1.1.7',
+            palette : 'androidx.palette:palette:1.0.0',
+            cardview : 'androidx.cardview:cardview:1.0.0',
+            joda : 'joda-time:joda-time:2.9.4',
+            constraint : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            replugin : 'com.qihoo360.replugin:replugin-host-lib:2.2.4',
+            recyclerview : 'androidx.recyclerview:recyclerview:1.0.0',
+            PhotoView : 'com.github.chrisbanes:PhotoView:2.1.3',
+            eventbus : 'org.greenrobot:eventbus:3.1.1',
+            richtext : 'com.zzhoujay.richtext:richtext:2.5.2',
+            wechat : 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+',
+            parse : 'com.parse:parse-android:1.13.1',
+            stetho : 'com.facebook.stetho:stetho:1.5.1',  //调试工具
+            DanmakuFlameMaster : 'com.github.ctiao:DanmakuFlameMaster:0.9.25',
+            ShortcutBadger : 'me.leolin:ShortcutBadger:1.1.22@aar',
+            FlycoTabLayout_Lib : 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar',
+            BaseRecyclerViewAdapterHelper : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+            calendarview : 'com.haibin:calendarview:3.6.6',
+            MPAndroidChart : 'com.github.PhilJay:MPAndroidChart:v3.1.0',
+            fresco: 'com.facebook.fresco:fresco:1.3.0',
+            fresco_animated_gif: 'com.facebook.fresco:animated-gif:1.3.0',
+            photodraweeview:'me.relex:photodraweeview:1.1.3',
+            lifecycle_extensions:'android.arch.lifecycle:extensions:1.1.1',
+            tagsoup: 'org.ccil.cowan.tagsoup:tagsoup:1.2.1',
+            annotations_java: 'org.jetbrains:annotations-java5:15.0',
+            alicloud_android_hotfix: 'com.aliyun.ams:alicloud-android-hotfix:3.2.12',
+            annotations_java: 'org.jetbrains:annotations-java5:15.0',
+            LabelsView: 'com.github.donkingliang:LabelsView:1.6.1',
+            Luban_Turbo: 'top.zibin:Luban-turbo:1.0.0',
+            refreshLayoutKernel: 'com.scwang.smart:refresh-layout-kernel:2.0.1', //核心必须依赖
+            refreshHeaderMaterial: 'com.scwang.smart:refresh-header-material:2.0.1', //谷歌刷新头
+            refreshHeaderClassics: 'com.scwang.smart:refresh-header-classics:2.0.1', //经典刷新头
+            refreshFooterClassics: 'com.scwang.smart:refresh-footer-classics:2.0.1', //经典加载
+            bugly: 'com.tencent.bugly:crashreport:latest.release' ,//其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+            leakcanary:'com.squareup.leakcanary:leakcanary-android:2.3',//内存检测工具
+            okdownload: 'com.liulishuo.okdownload:okdownload:1.0.7',
+            sqlite: 'com.liulishuo.okdownload:sqlite:1.0.7',
+            okdownloadOkhttp: 'com.liulishuo.okdownload:okhttp:1.0.7',
+            mqtt_service: 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1',
+            mqtt_client: 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1',
+            flutterembedding: 'io.flutter:flutter_embedding_release:1.0.0-af51afceb8886cc11e25047523c4e0c7e1f5d408@jar',
+            flutterlib: 'io.flutter:armeabi_v7a_release:1.0.0-af51afceb8886cc11e25047523c4e0c7e1f5d408@jar',
+            flutterfaiwebview: 'com.fai.flutter_fai_webview:flutter_fai_webview_release:1.0@aar',
+            fluttertoast: 'io.github.ponnamkarthik.toast.fluttertoast:fluttertoast_release:1.0@aar',
+            fluttersharepreferences: 'io.flutter.plugins.sharedpreferences:shared_preferences_release:1.0@aar',
+            flutterzhihuidangjian: 'com.hmfl.careasy.zhihuidangjian:flutter_release:1.0@aar', // 智慧党建aar
+            udesk: 'com.hmfl.careasy:udesk:1.0.0',//在线客服arr
+            meeting_room_gw: 'com.hmfl.careasy:meeting-room-v1:1.1.1',//会议室arr
+            scheduledbus: 'com.hmfl.careasy:scheduledbus:1.0.5',//通勤班车arr
+            drivertask: 'com.hmfl.careasy:drivertask:1.0.4',//通勤班车司机任务组件arr
+            weibao: 'com.hmfl.careasy:weibao:1.0.6',//维保组件arr
+            refueling: 'com.hmfl.careasy:refueling:1.0.5',//加油组件arr
+            personaltravel: 'com.hmfl.careasy:personaltravel:1.0.6',//个人出行组件arr
+            reimbursement: 'com.hmfl.careasy:reimbursement:1.0.6',//司机报销组件arr
+            organaffairs: 'com.hmfl.careasy:organaffairs:1.0.1',//机关事务组件arr
+            gongfang: 'com.hmfl.careasy:gongfang:1.0.0',//公房组件arr
+            assetsmodel: 'com.hmfl.careasy:assets:1.0.0',//资产组件arr
+            officialreceptions: 'com.hmfl.careasy:officialreceptions:1.0.0',//公务接待组件arr
+            vehiclestatistics: 'com.hmfl.careasy:vehiclestatistics:1.0.2',// 用车统计组件arr
+            personalcar: 'com.hmfl.careasy:personalcar:1.0.0',// 个人用车轨迹组件arr
+            bus: 'com.hmfl.careasy:bus:1.0.2',// 公交车组件arr
+            dispatching: 'com.hmfl.careasy:dispatching:1.0.7',// 调度派车组件arr
+            onekey: 'com.hmfl.careasy:onekey:1.0.6',// 一键XX组件arr
+            holidaytravel: 'com.hmfl.careasy:holidaytravel:1.0.2',// 节假日出行组件arr
+            travelhelp: 'com.hmfl.careasy:travelhelp:1.0.4',// 行程助手组件arr
+            check: 'com.hmfl.careasy:check:1.0.6',// 审核审批组件arr
+            driverstatus: 'com.hmfl.careasy:driverstatus:1.0.4',// 司机状态组件arr
+            carregistration: 'com.hmfl.careasy:carregistration:1.0.6',// 用车登记组件arr
+            jiaoche: 'com.hmfl.careasy:jiaoche:1.0.7',// 交车审核组件arr
+            scheduledbusmanagement: 'com.hmfl.careasy:scheduledbusmanagement:1.0.3',// 班车管理组件arr
+            realtimeline: 'com.hmfl.careasy:realtimeline:1.0.4',// 实时班线组件arr
+            order: 'com.hmfl.careasy:order:1.0.7',// 公务出行订单组件arr
+            emergency: 'com.hmfl.careasy:emergency:1.0.6',//应急派车组件arr
+            performance: 'com.hmfl.careasy:performance:1.0.2',//司机业绩组件arr
+            complaint: 'com.hmfl.careasy:complaint:1.0.2',//匿名投诉组件arr
+            training: 'com.hmfl.careasy:training:1.0.1',//培训组件aar
+            earlywarning: 'com.hmfl.careasy:earlywarning:1.0.7',//预警信息组件aar
+            establishmanage: 'com.hmfl.careasy:establishmanage:1.0.4',//编制管理组件arr
+            applycar: 'com.hmfl.careasy:applycar:1.0.6',//公务申请单组件arr
+            carstatus: 'com.hmfl.careasy:carstatus:1.0.3',// 车辆状态组件arr
+            servicepoint: 'com.hmfl.careasy:servicepoint:1.0.1',// 服务网点组件arr
+            drivermission: 'com.hmfl.careasy:drivermission:1.0.8',// 驾驶员任务组件arr
+            allocation: 'com.hmfl.careasy:allocation:1.0.6',//调拨管理arr
+            tbapply: 'com.hmfl.careasy:tbapply:1.0.4',//简版申请单组件arr
+            monitor:'com.hmfl.careasy:monitor:1.0.2',//实时监控组件arr
+            attendance:'com.hmfl.careasy:attendance:1.0.4', //考勤组件arr
+            cartrack:'com.hmfl.careasy:cartrack:1.0.1', //用户车辆轨迹组件arr
+            custominfo:'com.hmfl.careasy:custominfo:1.0.3',//客户管理组件arr
+            customorder:'com.hmfl.careasy:customorder:1.0.0',//客户订单组件arr
+            keycabinet:'com.hmfl.careasy:keycabinet:1.0.2',//钥匙柜组件arr
+            settlement:'com.hmfl.careasy:settlement:1.0.1',//客户结算组件arr
+            invoicemanagement:'com.hmfl.careasy:invoicemanagement:1.0.1',//开票管理组件arr
+    ]
+
+}

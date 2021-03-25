@@ -1,0 +1,1347 @@
+package com.zzh.uidemo.file1
+
+apply plugin: 'com.android.application'
+apply plugin: 'replugin-host-gradle'
+Properties properties = new Properties()
+if (FLAG.toBoolean()) {
+    properties.load(project.rootProject.file("app/src/main/assets/config.properties").newDataInputStream())
+} else {
+    properties.load(project.rootProject.file("app/src/main/assets/config_debug.properties").newDataInputStream())
+}
+
+def config = rootProject.ext.android // 配置
+def librarys = rootProject.ext.dependencies // 依赖
+
+static def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy-MM-dd')
+    return formattedDate
+}
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+    signingConfigs {
+        signingConfig {
+            storeFile file("..\\CarEasy")
+            storePassword STORE_PASSWORD
+            keyAlias "carreasy"
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    flavorDimensions "default"
+
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "4g"//越大越好
+    }
+    lintOptions {
+        disable "ResourceType"
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    defaultConfig {
+        applicationId "com.hmfl.careasy"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode APP_VERSION_CODE as int
+        versionName APP_VERSION_NAME
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath = true
+            }
+        }
+        packagingOptions {
+            exclude 'META-INF/proguard/androidx-annotations.pro'
+        }
+        //X5兼容64位手机
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a"
+        }
+        signingConfig signingConfigs.signingConfig
+        buildConfigField "boolean", "FLAG", "${FLAG}"
+        buildConfigField "boolean", "SOPHIX_ENABLE", "${SOPHIX_ENABLE}"
+    }
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signingConfig
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.signingConfig
+        }
+    }
+
+
+    productFlavors {
+        def app_key
+        def app_secret
+        def rsa_secret
+        def bugly_app_id
+        app_key = properties.getProperty("sophix_app_key")
+        app_secret = properties.getProperty("sophix_app_secret")
+        rsa_secret = properties.getProperty("sophix_rsa_secret")
+        bugly_app_id = properties.getProperty("bugly_app_id")
+        云南公务用车易 {
+            manifestPlaceholders = [str: "yunnanStr"
+                                    , package_name: "@string/app_name_yunnan"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("yunnan_baidu")
+                                    , baidu_count_key: properties.getProperty("yunnan_baiducount")
+                                    , jpush_key: properties.getProperty("yunnan_jpush")
+                                    , wxpay: properties.getProperty("yunnan_wxpay")
+                                    , im_chat_key: properties.getProperty("yunnan_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.yunnan"
+            resValue("string", "APP_USE_SOURCE", "LYX0YN440")
+            resValue("string", "versionFlag", "云南公务用车易版本")
+        }
+
+
+        一汽行 {
+            manifestPlaceholders = [str: "yiqiStr"
+                                    , package_name: "@string/app_name_yiqi"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("yiqi_baidu")
+                                    , baidu_count_key: properties.getProperty("yiqi_baiducount")
+                                    , jpush_key: properties.getProperty("yiqi_jpush")
+                                    , wxpay: properties.getProperty("yiqi_wxpay")
+                                    , im_chat_key:properties.getProperty("yiqi_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.yiqi"
+            resValue("string", "APP_USE_SOURCE", "LYX959977")
+            resValue("string", "versionFlag", "一汽行版本")
+        }
+
+        致程记 {
+            manifestPlaceholders = [str: "zhichStr"
+                                    , package_name: "@string/app_name_zhichengji"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("zhicheng_baidu")
+                                    , baidu_count_key: properties.getProperty("zhicheng_baiducount")
+                                    , jpush_key: properties.getProperty("zhicheng_jpush")
+                                    , wxpay: properties.getProperty("zhicheng_wxpay")
+                                    , im_chat_key:properties.getProperty("zhicheng_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.zhicheng"
+            resValue("string", "APP_USE_SOURCE", "LYX44516683")
+            resValue("string", "versionFlag", "致程记版本")
+        }
+
+        宁夏公务用车易 {
+            manifestPlaceholders = [str: "ningxiaquanyuStr"
+                                    , package_name: "@string/app_name_ningxiaqgongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("ningxia_gw_baidu")
+                                    , baidu_count_key: properties.getProperty("ningxia_gw_baiducount")
+                                    , jpush_key: properties.getProperty("ningxia_gw_jpush")
+                                    , wxpay: properties.getProperty("ningxia_gw_wxpay")
+                                    , im_chat_key:properties.getProperty("ningxia_gw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.ningxiagw"
+            resValue("string", "APP_USE_SOURCE", "LYX436964")
+            resValue("string", "versionFlag", "宁夏公务用车易版本")
+        }
+
+        辽宁公务用车易 {
+            manifestPlaceholders = [str: "liaoningStr"
+                                    , package_name: "@string/app_name_liaoning"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("liaoning_baidu")
+                                    , baidu_count_key: properties.getProperty("liaoning_baiducount")
+                                    , jpush_key: properties.getProperty("liaoning_jpush")
+                                    , wxpay: properties.getProperty("liaoning_wxpay")
+                                    , im_chat_key:properties.getProperty("liaoning_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.liaoning"
+            resValue("string", "APP_USE_SOURCE", "LYX996135")
+            resValue("string", "versionFlag", "辽宁公务用车易版本")
+        }
+
+        广西公务用车易 {
+            manifestPlaceholders = [str: "jicenggongwuStr"
+                                    , package_name: "@string/app_name_guangxigongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("guangxigw_baidu")
+                                    , baidu_count_key: properties.getProperty("guangxigw_baiducount")
+                                    , jpush_key: properties.getProperty("guangxigw_jpush")
+                                    , wxpay: properties.getProperty("guangxigw_wxpay")
+                                    , im_chat_key:properties.getProperty("guangxigw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.guangxigw"
+            resValue("string", "APP_USE_SOURCE", "LYX708987")
+            resValue("string", "versionFlag", "广西公务用车易版本")
+        }
+
+        络易行生产 {
+            manifestPlaceholders = [str: "luoyixingStr"
+                                    , package_name: "@string/app_name_jicenggongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("luoyixingsc_baidu")
+                                    , baidu_count_key: properties.getProperty("luoyixingsc_baiducount")
+                                    , jpush_key: properties.getProperty("luoyixingsc_jpush")
+                                    , wxpay: properties.getProperty("luoyixingsc_wxpay")
+                                    , im_chat_key:properties.getProperty("luoyixingsc_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.luoyixingsc"
+            resValue("string", "APP_USE_SOURCE", "LYX576974-201804")
+            resValue("string", "versionFlag", "络易行生产版本")
+        }
+
+        河北公务用车易 {
+            manifestPlaceholders = [str: "hebeigongwuStr"
+                                    , package_name: "@string/app_name_hebeigongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hebeigw_baidu")
+                                    , baidu_count_key: properties.getProperty("hebeigw_baiducount")
+                                    , jpush_key: properties.getProperty("hebeigw_jpush")
+                                    , wxpay: properties.getProperty("hebeigw_wxpay")
+                                    , im_chat_key:properties.getProperty("hebeigw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hebeigw"
+            resValue("string", "APP_USE_SOURCE", "LYX747445")
+            resValue("string", "versionFlag", "河北公务用车易版本")
+        }
+
+        合肥供水出行 {
+            manifestPlaceholders = [str: "hefeigongshuiStr"
+                                    , package_name: "@string/app_name_hefeigscx"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hefeigongshui_baidu")
+                                    , baidu_count_key: properties.getProperty("hefeigongshui_baiducount")
+                                    , jpush_key: properties.getProperty("hefeigongshui_jpush")
+                                    , wxpay: properties.getProperty("hefeigongshui_wxpay")
+                                    , im_chat_key:properties.getProperty("hefeigongshui_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hefeigscx"
+            resValue("string", "APP_USE_SOURCE", "LYX873085")
+            resValue("string", "versionFlag", "合肥供水出行版本")
+        }
+
+        合肥联通出行 {
+            manifestPlaceholders = [str: "hefeiliantongStr"
+                                    , package_name: "@string/app_name_hefeiltcx"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hefeiliantong_baidu")
+                                    , baidu_count_key: properties.getProperty("hefeiliantong_baiducount")
+                                    , jpush_key: properties.getProperty("hefeiliantong_jpush")
+                                    , wxpay: properties.getProperty("hefeiliantong_wxpay")
+                                    , im_chat_key:properties.getProperty("hefeiliantong_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hefeiltcx"
+            resValue("string", "APP_USE_SOURCE", "LYX272766")
+            resValue("string", "versionFlag", "合肥联通出行版本")
+        }
+
+        合肥宇洁出行 {
+            manifestPlaceholders = [str: "hefeiyujieStr"
+                                    , package_name: "@string/app_name_hefeiyjcx"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hefeiyujie_baidu")
+                                    , baidu_count_key: properties.getProperty("hefeiyujie_baiducount")
+                                    , jpush_key: properties.getProperty("hefeiyujie_jpush")
+                                    , wxpay: properties.getProperty("hefeiyujie_wxpay")
+                                    , im_chat_key:properties.getProperty("hefeiyujie_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hefeiyjcx"
+            resValue("string", "APP_USE_SOURCE", "LYX428007")
+            resValue("string", "versionFlag", "合肥宇洁出行版本")
+        }
+
+        云南云易行 {
+            manifestPlaceholders = [str: "yunyixingStr"
+                                    , package_name: "@string/app_name_yunyixing"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("yunnan_yyx_baidu")
+                                    , baidu_count_key: properties.getProperty("yunnan_yyx_baiducount")
+                                    , jpush_key: properties.getProperty("yunnan_yyx_jpush")
+                                    , wxpay: properties.getProperty("yunnan_yyx_wxpay")
+                                    , im_chat_key:properties.getProperty("yunnan_yyx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.yunnanyyx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "云南云易行版本")
+        }
+
+        吉林公务用车易 {
+            manifestPlaceholders = [str: "jilinzwStr"
+                                    , package_name: "@string/app_name_jilinzw"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("jilin_zw_baidu")
+                                    , baidu_count_key: properties.getProperty("jilin_zw_baiducount")
+                                    , jpush_key: properties.getProperty("jilin_zw_jpush")
+                                    , wxpay: properties.getProperty("jilin_zw_wxpay")
+                                    , im_chat_key:properties.getProperty("jilin_zw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.jilinzw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "吉林公务用车易")
+        }
+
+        安徽公务用车易 {
+            manifestPlaceholders = [str: "anhuiStr"
+                                    , package_name: "@string/app_name_anhuigongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("anhui_gw_baidu")
+                                    , baidu_count_key: properties.getProperty("anhui_gw_baiducount")
+                                    , jpush_key: properties.getProperty("anhui_gw_jpush")
+                                    , wxpay: properties.getProperty("anhui_gw_wxpay")
+                                    , im_chat_key:properties.getProperty("anhui_gw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.anhuigw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "安徽公务用车易版本")
+        }
+
+        内蒙古公务用车易 {
+            manifestPlaceholders = [str: "neimengguStr"
+                                    , package_name: "@string/app_name_neimenggugongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("neimenggu_gw_baidu")
+                                    , baidu_count_key: properties.getProperty("neimenggu_gw_baiducount")
+                                    , jpush_key: properties.getProperty("neimenggu_gw_jpush")
+                                    , wxpay: properties.getProperty("neimenggu_gw_wxpay")
+                                    , im_chat_key:properties.getProperty("neimenggu_gw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.nmggw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "内蒙古公务用车易版本")
+        }
+
+        北京公务用车易 {
+            manifestPlaceholders = [str: "beijingStr"
+                                    , package_name: "@string/app_name_beijinggongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("beijing_gw_baidu")
+                                    , baidu_count_key: properties.getProperty("beijing_gw_baiducount")
+                                    , jpush_key: properties.getProperty("beijing_gw_jpush")
+                                    , wxpay: properties.getProperty("beijing_gw_wxpay")
+                                    , im_chat_key:properties.getProperty("beijing_gw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.beijinggw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "北京公务用车易版本")
+        }
+
+        通用2G公务用车易 {
+            manifestPlaceholders = [str: "anhuiquanyuStr"
+                                    , package_name: "@string/app_name_anhuiquanyu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("anhuiquanyu_baidu")
+                                    , baidu_count_key: properties.getProperty("anhuiquanyu_baiducount")
+                                    , jpush_key: properties.getProperty("anhuiquanyu_jpush")
+                                    , wxpay: properties.getProperty("anhuiquanyu_wxpay")
+                                    , im_chat_key:properties.getProperty("anhuiquanyu_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.anhuiquanyu"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "通用2G公务用车易")
+        }
+
+        山西公务用车易 {
+            manifestPlaceholders = [str: "shanxigwStr"
+                                    , package_name: "@string/app_name_shanxigongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("shanxigw_baidu")
+                                    , baidu_count_key: properties.getProperty("shanxigw_baiducount")
+                                    , jpush_key: properties.getProperty("shanxigw_jpush")
+                                    , wxpay: properties.getProperty("shanxigw_wxpay")
+                                    , im_chat_key:properties.getProperty("shanxigw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.shanxigongwu"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "山西公务用车易")
+        }
+
+        基层保障平台 {
+            manifestPlaceholders = [str: "shanxigwStr"
+                                    , package_name: "@string/app_name_ajicenggwbz"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("jicengbaozhang_baidu")
+                                    , baidu_count_key: properties.getProperty("jicengbaozhang_baiducount")
+                                    , jpush_key: properties.getProperty("jicengbaozhang_jpush")
+                                    , wxpay: properties.getProperty("jicengbaozhang_wxpay")
+                                    , im_chat_key:properties.getProperty("jicengbaozhang_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.jicengbzgw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "基层保障平台")
+        }
+
+        六盘水公务用车易 {
+            manifestPlaceholders = [str: "guizhougwStr"
+                                    , package_name: "@string/app_name_guizhougwbz"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("guizhougw_baidu")
+                                    , baidu_count_key: properties.getProperty("guizhougw_baiducount")
+                                    , jpush_key: properties.getProperty("guizhougw_jpush")
+                                    , wxpay: properties.getProperty("guizhougw_wxpay")
+                                    , im_chat_key:properties.getProperty("guizhougw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.guizhougw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "六盘水公务用车易")
+        }
+
+        贵州公务用车易 {
+            manifestPlaceholders = [str: "liupanshuigwStr"
+                                    , package_name: "@string/app_name_liupanshuigwbz"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("liupanshuigw_baidu")
+                                    , baidu_count_key: properties.getProperty("liupanshuigw_baiducount")
+                                    , jpush_key: properties.getProperty("liupanshuigw_jpush")
+                                    , wxpay: properties.getProperty("liupanshuigw_wxpay")
+                                    , im_chat_key:properties.getProperty("liupanshuigw_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.liupanshuigw"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "贵州公务用车易")
+        }
+
+        生猪运输管理 {
+            manifestPlaceholders = [str: "livepigStr"
+                                    , package_name: "@string/app_name_livepigStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("livepig_baidu")
+                                    , baidu_count_key: properties.getProperty("livepig_baiducount")
+                                    , jpush_key: properties.getProperty("livepig_jpush")
+                                    , wxpay: properties.getProperty("livepig_wxpay")
+                                    , im_chat_key:properties.getProperty("livepig_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.livepigmag"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "生猪运输管理")
+        }
+
+        宝武易出行 {
+            manifestPlaceholders = [str: "baowucxStr"
+                                    , package_name: "@string/app_name_baowuycxStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("baowuycx_baidu")
+                                    , baidu_count_key: properties.getProperty("baowuycx_baiducount")
+                                    , jpush_key: properties.getProperty("baowuycx_jpush")
+                                    , wxpay: properties.getProperty("baowuycx_wxpay")
+                                    , im_chat_key:properties.getProperty("baowuycx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.baowuycx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "宝武易出行")
+        }
+
+        湖北公务用车易 {
+            manifestPlaceholders = [str: "hubeigwcxStr"
+                                    , package_name: "@string/app_name_hubeigwcxStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hubeigwcx_baidu")
+                                    , baidu_count_key: properties.getProperty("hubeigwcx_baiducount")
+                                    , jpush_key: properties.getProperty("hubeigwcx_jpush")
+                                    , wxpay: properties.getProperty("hubeigwcx_wxpay")
+                                    , im_chat_key:properties.getProperty("hubeigwcx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hubeigwcx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "湖北公务用车易")
+        }
+
+        湖北公车管理 {
+            manifestPlaceholders = [str: "hubeigcmanagerStr"
+                                    , package_name: "@string/app_name_hubeigcmanager"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hubeigcmanager_baidu")
+                                    , baidu_count_key: properties.getProperty("hubeigcmanager_baiducount")
+                                    , jpush_key: properties.getProperty("hubeigcmanager_jpush")
+                                    , wxpay: properties.getProperty("hubeigcmanager_wxpay")
+                                    , im_chat_key:properties.getProperty("hubeigcmanager_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hubeigcmanager"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "湖北公车管理")
+        }
+
+        青海公务用车易 {
+            manifestPlaceholders = [str: "qinghaigwcxStr"
+                                    , package_name: "@string/app_name_qinghaigwcxStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("qinghaigwcx_baidu")
+                                    , baidu_count_key: properties.getProperty("qinghaigwcx_baiducount")
+                                    , jpush_key: properties.getProperty("qinghaigwcx_jpush")
+                                    , wxpay: properties.getProperty("qinghaigwcx_wxpay")
+                                    , im_chat_key:properties.getProperty("qinghaigwcx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.qinghaigwcx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "青海公务用车易")
+        }
+
+        通用驾驶员版本 {
+            manifestPlaceholders = [str: "commondriverStr"
+                                    , package_name: "@string/app_name_commondriverStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("commondriver_baidu")
+                                    , baidu_count_key: properties.getProperty("commondriver_baiducount")
+                                    , jpush_key: properties.getProperty("commondriver_jpush")
+                                    , wxpay: properties.getProperty("commondriver_wxpay")
+                                    , im_chat_key:properties.getProperty("commondriver_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.commondriver"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "通用驾驶员版本")
+        }
+
+        山东公务用车易 {
+            manifestPlaceholders = [str: "shandonggwcxStr"
+                                    , package_name: "@string/app_name_shandonggwcxStr"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("shandonggwcx_baidu")
+                                    , baidu_count_key: properties.getProperty("shandonggwcx_baiducount")
+                                    , jpush_key: properties.getProperty("shandonggwcx_jpush")
+                                    , wxpay: properties.getProperty("shandonggwcx_wxpay")
+                                    , im_chat_key:properties.getProperty("shandonggwcx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.shandonggwcx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "山东公务用车易")
+        }
+
+        安徽新版公务用车易 {
+            manifestPlaceholders = [str: "anhuiStr"
+                                    , package_name: "@string/app_name_anhuigongwu"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("anhuinewgwcx_baidu")
+                                    , baidu_count_key: properties.getProperty("anhuinewgwcx_baiducount")
+                                    , jpush_key: properties.getProperty("anhuinewgwcx_jpush")
+                                    , wxpay: properties.getProperty("anhuinewgwcx_wxpay")
+                                    , im_chat_key:properties.getProperty("anhuinewgwcx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.anhuinewgwcx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "安徽新版公务用车易")
+        }
+
+        湖北执法应急保障 {
+            manifestPlaceholders = [str: "hubeilawensureStr"
+                                    , package_name: "@string/app_name_hubeilawensure"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("hubeilawensure_baidu")
+                                    , baidu_count_key: properties.getProperty("hubeilawensure_baiducount")
+                                    , jpush_key: properties.getProperty("hubeilawensure_jpush")
+                                    , wxpay: properties.getProperty("hubeilawensure_wxpay")
+                                    , im_chat_key:properties.getProperty("hubeilawensure_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.hubeilawensure"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "湖北执法应急保障")
+        }
+
+        河南公务用车易 {
+            manifestPlaceholders = [str: "henangwcxStr"
+                                    , package_name: "@string/app_name_henangwcx"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("henanwgwcx_baidu")
+                                    , baidu_count_key: properties.getProperty("henanwgwcx_baiducount")
+                                    , jpush_key: properties.getProperty("henanwgwcx_jpush")
+                                    , wxpay: properties.getProperty("henanwgwcx_wxpay")
+                                    , im_chat_key:properties.getProperty("henanwgwcx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.henangwcx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "河南公务用车易")
+        }
+
+        def organaffairs_app_key
+        def organaffairs_app_secret
+        def organaffairs_rsa_secret
+        organaffairs_app_key = properties.getProperty("organaffairs_sophix_app_key")
+        organaffairs_app_secret = properties.getProperty("organaffairs_sophix_app_secret")
+        organaffairs_rsa_secret = properties.getProperty("organaffairs_sophix_rsa_secret")
+
+        机关事务 {
+            manifestPlaceholders = [str: "organaffairsStr"
+                                    , package_name: "@string/app_name_organaffairs"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("organaffairs_baidu")
+                                    , baidu_count_key: properties.getProperty("organaffairs_baiducount")
+                                    , jpush_key: properties.getProperty("organaffairs_jpush")
+                                    , wxpay: properties.getProperty("organaffairs_wxpay")
+                                    , im_chat_key:properties.getProperty("organaffairs_imchat")
+                                    , sophix_app_key: organaffairs_app_key
+                                    , sophix_app_secret: organaffairs_app_secret
+                                    , sophix_rsa_secret: organaffairs_rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.organaffairs"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "机关事务")
+        }
+
+        广西机关事务通 {
+            manifestPlaceholders = [str: "gxorganaffairsStr"
+                                    , package_name: "@string/app_name_gxorganaffairs"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("gxorganaffairs_baidu")
+                                    , baidu_count_key: properties.getProperty("gxorganaffairs_baiducount")
+                                    , jpush_key: properties.getProperty("gxorganaffairs_jpush")
+                                    , wxpay: properties.getProperty("gxorganaffairs_wxpay")
+                                    , im_chat_key:properties.getProperty("gxorganaffairs_imchat")
+                                    , sophix_app_key: organaffairs_app_key
+                                    , sophix_app_secret: organaffairs_app_secret
+                                    , sophix_rsa_secret: organaffairs_rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.gxorganaffairs"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "广西机关事务通")
+        }
+
+        络宝管家 {
+            manifestPlaceholders = [str: "lyxpersonalcarStr"
+                                    , package_name: "@string/app_name_lyxpersonalcar"
+                                    , icon: "@mipmap/lyx_personalcar_icon"
+                                    , baidu_key: properties.getProperty("lyxpersonalcar_baidu")
+                                    , baidu_count_key: properties.getProperty("lyxpersonalcar_baiducount")
+                                    , jpush_key: properties.getProperty("lyxpersonalcar_jpush")
+                                    , wxpay: properties.getProperty("lyxpersonalcar_wxpay")
+                                    , im_chat_key: properties.getProperty("lyxpersonalcar_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.personalcar"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "络宝管家")
+        }
+
+        络易行工作台 {
+            manifestPlaceholders = [str: "lyxworkplateStr"
+                                    , package_name: "@string/app_name_lyxworkplate"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("lyxworkplate_baidu")
+                                    , baidu_count_key: properties.getProperty("lyxworkplate_baiducount")
+                                    , jpush_key: properties.getProperty("lyxworkplate_jpush")
+                                    , wxpay: properties.getProperty("lyxworkplate_wxpay")
+                                    , im_chat_key:properties.getProperty("lyxworkplate_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.lyxworkplate"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "络易行工作台")
+        }
+
+        机关事务预演 {
+            manifestPlaceholders = [str: "organaffairspreviewStr"
+                                    , package_name: "@string/app_name_organaffairspreview"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("organaffairspreview_baidu")
+                                    , baidu_count_key: properties.getProperty("organaffairspreview_baiducount")
+                                    , jpush_key: properties.getProperty("organaffairspreview_jpush")
+                                    , wxpay: properties.getProperty("organaffairspreview_wxpay")
+                                    , im_chat_key:properties.getProperty("organaffairspreview_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.organaffairspreview"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "机关事务预演")
+        }
+        中北出行 {
+            manifestPlaceholders = [str: "zhongbeicxStr"
+                                    , package_name: "@string/app_name_zhongbeicx"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("zhongbeicx_baidu")
+                                    , baidu_count_key: properties.getProperty("zhongbeicx_baiducount")
+                                    , jpush_key: properties.getProperty("zhongbeicx_jpush")
+                                    , wxpay: properties.getProperty("zhongbeicx_wxpay")
+                                    , im_chat_key:properties.getProperty("zhongbeicx_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.zhongbeicx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "中北出行")
+        }
+        def police_sophix_app_key
+        def police_sophix_app_secret
+        def police_sophix_rsa_secret
+        police_sophix_app_key = properties.getProperty("police_sophix_app_key")
+        police_sophix_app_secret = properties.getProperty("police_sophix_app_secret")
+        police_sophix_rsa_secret = properties.getProperty("police_sophix_rsa_secret")
+        智慧警务出行 {
+            manifestPlaceholders = [str                : "policecxStr"
+                                    , package_name     : "@string/app_name_policecx"
+                                    , icon             : "@mipmap/car_easy_caricon"
+                                    , baidu_key        : properties.getProperty("policecx_baidu")
+                                    , baidu_count_key  : properties.getProperty("policecx_baiducount")
+                                    , jpush_key        : properties.getProperty("policecx_jpush")
+                                    , wxpay            : properties.getProperty("policecx_wxpay")
+                                    , im_chat_key      : properties.getProperty("policecx_imchat")
+                                    , sophix_app_key   : police_sophix_app_key
+                                    , sophix_app_secret: police_sophix_app_secret
+                                    , sophix_rsa_secret: police_sophix_rsa_secret
+                                    , bugly_app_id     : bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.policecx"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "智慧警务出行")
+        }
+        def jingwubaozhang_app_key
+        def jingwubaozhang_app_secret
+        def jingwubaozhang_rsa_secret
+        jingwubaozhang_app_key = properties.getProperty("jingwubaozhang_sophix_app_key")
+        jingwubaozhang_app_secret = properties.getProperty("jingwubaozhang_sophix_app_secret")
+        jingwubaozhang_rsa_secret = properties.getProperty("jingwubaozhang_sophix_rsa_secret")
+        警务保障 {
+            manifestPlaceholders = [str: "jingwubaozhangStr"
+                                    , package_name: "@string/app_name_jingwubaozhang"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("jingwubaozhang_baidu")
+                                    , baidu_count_key: properties.getProperty("jingwubaozhang_baiducount")
+                                    , jpush_key: properties.getProperty("jingwubaozhang_jpush")
+                                    , wxpay: properties.getProperty("jingwubaozhang_wxpay")
+                                    , im_chat_key:properties.getProperty("jingwubaozhang_imchat")
+                                    , sophix_app_key: jingwubaozhang_app_key
+                                    , sophix_app_secret: jingwubaozhang_app_secret
+                                    , sophix_rsa_secret: jingwubaozhang_rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.jingwubaozhang"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "警务保障")
+        }
+
+        美络一家人 {
+            manifestPlaceholders = [str: "mlonefamilyStr"
+                                    , package_name: "@string/app_name_mlonefamily"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("mlonefamily_baidu")
+                                    , baidu_count_key: properties.getProperty("mlonefamily_baiducount")
+                                    , jpush_key: properties.getProperty("mlonefamily_jpush")
+                                    , wxpay: properties.getProperty("mlonefamily_wxpay")
+                                    , im_chat_key:properties.getProperty("mlonefamily_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+            ]
+            applicationId = "com.hmfl.careasy.mlonefamily"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "美络一家人")
+        }
+        易云 {
+            manifestPlaceholders = [str: "yijiayunStr"
+                                    , package_name: "@string/app_name_yijiayun"
+                                    , icon: "@mipmap/car_easy_caricon"
+                                    , baidu_key: properties.getProperty("yijiayun_baidu")
+                                    , baidu_count_key: properties.getProperty("yijiayun_baiducount")
+                                    , jpush_key: properties.getProperty("yijiayun_jpush")
+                                    , wxpay: properties.getProperty("yijiayun_wxpay")
+                                    , im_chat_key:properties.getProperty("yijiayun_imchat")
+                                    , sophix_app_key: app_key
+                                    , sophix_app_secret: app_secret
+                                    , sophix_rsa_secret: rsa_secret
+                                    , bugly_app_id: bugly_app_id
+            ]
+            applicationId = "com.hmfl.careasy.yijiayun"
+            resValue("string", "APP_USE_SOURCE", "")
+            resValue("string", "versionFlag", "易云")
+        }
+    }
+
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def newName
+            def timeNow
+            // 自定义输出路径
+            if ("true".equals(IS_JENKINS)) {
+                newName = APP_NAME +  '.apk'
+                variant.getPackageApplication().outputDirectory = new File(OUTDIRECTORY)
+            } else {
+                timeNow = getDate()
+                if (variant.buildType.name.equals('debug')) {
+                    newName = "android-v${config.versionName}-debug.apk"
+                } else {
+                    newName = 'android-v' +
+                            config.versionName + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
+                }
+            }
+            outputFileName = newName
+        }
+    }
+}
+
+repluginHostConfig {
+    useAppCompat = true
+}
+dependencies {
+    annotationProcessor librarys.arouterCompiler
+    compile project(':baseFunctionModule:baseutillib')
+    if (!isMeetingRoomModule.toBoolean()) {
+        if (!isMeetingRoomModule.equals("code")) {
+            compile(librarys.meeting_room_gw) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isScheduledBusModule.toBoolean()) {
+        compile project(':commonBusinessModule:scheduledbus')
+    } else {
+        if (!isScheduledBusModule.equals("code")) {
+            compile(librarys.scheduledbus) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isDriverTaskModule.toBoolean()) {
+        compile project(':commonBusinessModule:drivertask')
+    } else {
+        if (!isDriverTaskModule.equals("code")) {
+            compile(librarys.drivertask) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isWeiBaoModule.toBoolean()) {
+        compile project(':commonBusinessModule:weibaomudule')
+    } else {
+        if (!isWeiBaoModule.equals("code")) {
+            compile(librarys.weibao) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isRefuelingModule.toBoolean()) {
+        compile project(':commonBusinessModule:refueling')
+    } else {
+        if (!isRefuelingModule.equals("code")) {
+            compile(librarys.refueling) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isPersonalTravelModule.toBoolean()) {
+        compile project(':commonBusinessModule:personaltravel')
+    }else {
+        if (!isPersonalTravelModule.equals("code")) {
+            compile(librarys.personaltravel) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isReimbursementModule.toBoolean()) {
+        compile project(':commonBusinessModule:reimbursementmodule')
+    }else {
+        if (!isReimbursementModule.equals("code")) {
+            compile(librarys.reimbursement) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isOrganAffairsModule.toBoolean()) {
+        compile project(':commonBusinessModule:organaffairs')
+    } else {
+        if (!isOrganAffairsModule.equals("code")) {
+            compile(librarys.organaffairs) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isGongFangModule.toBoolean()) {
+        compile project(':commonBusinessModule:gongfang')
+    } else {
+        if (!isGongFangModule.equals("code")) {
+            compile(librarys.gongfang) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isAssetsModule.toBoolean()) {
+        compile project(':commonBusinessModule:assetsmodule')
+    } else {
+        if (!isAssetsModule.equals("code")) {
+            compile(librarys.assetsmodel) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isOfficialReceptions.toBoolean()) {
+        compile project(':commonBusinessModule:officialreceptions')
+    } else {
+        if (!isOfficialReceptions.equals("code")) {
+            compile(librarys.officialreceptions) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isVehicleStatistics.toBoolean()) {
+        compile project(':commonBusinessModule:vehiclestatistics')
+    }else {
+        if (!isVehicleStatistics.equals("code")) {
+            compile(librarys.vehiclestatistics) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isPersonalCarModule.toBoolean()) {
+        compile project(':commonBusinessModule:personalcar')
+    } else {
+        if (!isPersonalCarModule.equals("code")) {
+            compile(librarys.personalcar) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isBus.toBoolean()) {
+        compile project(':commonBusinessModule:bus')
+    } else {
+        if (!isBus.equals("code")) {
+            compile(librarys.bus) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isDispatchingModule.toBoolean()) {
+        compile project(':commonBusinessModule:dispatchingmodule')
+    } else {
+        if (!isDispatchingModule.equals("code")) {
+            compile(librarys.dispatching) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isOneKeyModule.toBoolean()) {
+        compile project(':commonBusinessModule:onekey')
+    } else {
+        if (!isOneKeyModule.equals("code")) {
+            compile(librarys.onekey) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isHolidayTravel.toBoolean()) {
+        compile project(':commonBusinessModule:holidaytravelmodule')
+    } else {
+        if (!isHolidayTravel.equals("code")) {
+            compile(librarys.holidaytravel) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isTravelHelpModule.toBoolean()) {
+        compile project(':commonBusinessModule:travelhelpmodule')
+    } else {
+        if (!isTravelHelpModule.equals("code")) {
+            compile(librarys.travelhelp) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCheckModule.toBoolean()) {
+        compile project(':commonBusinessModule:checkmodule')
+    } else {
+        if (!isCheckModule.equals("code")) {
+            compile(librarys.check) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isDriverStatusModule.toBoolean()) {
+        compile project(':commonBusinessModule:driverstatusmodule')
+    }else {
+        if (!isDriverStatusModule.equals("code")) {
+            compile(librarys.driverstatus) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCarRegistrationModule.toBoolean()) {
+        compile project(':commonBusinessModule:carregistrationmodule')
+    } else {
+        if (!isCarRegistrationModule.equals("code")) {
+            compile(librarys.carregistration) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isJiaoCheModule.toBoolean()) {
+        compile project(':commonBusinessModule:jiaochemodule')
+    }else {
+        if (!isJiaoCheModule.equals("code")) {
+            compile(librarys.jiaoche) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isScheduledBusManagementModule.toBoolean()) {
+        compile project(':commonBusinessModule:scheduledbusmanagement')
+    } else {
+        if (!isScheduledBusManagementModule.equals("code")) {
+            compile(librarys.scheduledbusmanagement) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isRealTimeLineModule.toBoolean()) {
+        compile project(':commonBusinessModule:realtimelinemodule')
+    } else {
+        if (!isRealTimeLineModule.equals("code")) {
+            compile(librarys.realtimeline) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCarStatusModule.toBoolean()) {
+        compile project(':commonBusinessModule:carstatusmodule')
+    } else {
+        if (!isCarStatusModule.equals("code")) {
+            compile(librarys.carstatus) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isServicePointModule.toBoolean()) {
+        compile project(':commonBusinessModule:servicepointmodule')
+    } else {
+        if (!isServicePointModule.equals("code")) {
+            compile(librarys.servicepoint) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isDriverMissionModule.toBoolean()) {
+        compile project(':commonBusinessModule:drivermissionmodule')
+    } else {
+        if (!isDriverMissionModule.equals("code")) {
+            compile(librarys.drivermission) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isOrderModule.toBoolean()) {
+        compile project(':commonBusinessModule:ordermodule')
+    } else {
+        if (!isOrderModule.equals("code")) {
+            compile(librarys.order) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isEmergencyModule.toBoolean()) {
+        compile project(':commonBusinessModule:emergencymodule')
+    } else {
+        if (!isEmergencyModule.equals("code")) {
+            compile(librarys.emergency) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isPerformanceModule.toBoolean()) {
+        compile project(':commonBusinessModule:performancemodule')
+    } else {
+        if (!isPerformanceModule.equals("code")) {
+            compile(librarys.performance) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isComplaintModule.toBoolean()) {
+        compile project(':commonBusinessModule:complaintmodule')
+    } else {
+        if (!isComplaintModule.equals("code")) {
+            compile(librarys.complaint) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isTrainingModule.toBoolean()) {
+        compile project(':commonBusinessModule:trainingmodule')
+    } else {
+        if (!isTrainingModule.equals("code")) {
+            compile(librarys.training) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isEarlyWarningModule.toBoolean()) {
+        compile project(':commonBusinessModule:earlywarningmodule')
+    } else {
+        if (!isEarlyWarningModule.equals("code")) {
+            compile(librarys.earlywarning) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isAllocationModule.toBoolean()) {
+        compile project(':commonBusinessModule:allocationModule')
+    }else {
+        if (!isAllocationModule.equals("code")) {
+            compile(librarys.allocation) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isEstablishManageModule.toBoolean()) {
+        compile project(':commonBusinessModule:establishmanage')
+    } else {
+        if (!isEstablishManageModule.equals("code")) {
+            compile(librarys.establishmanage) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isApplyCarModule.toBoolean()) {
+        compile project(':commonBusinessModule:applycarmodule')
+    } else {
+        if (!isApplyCarModule.equals("code")) {
+            compile(librarys.applycar) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isTbApplyModule.toBoolean()) {
+        compile project(':commonBusinessModule:tbapplymodule')
+    } else {
+        if (!isTbApplyModule.equals("code")) {
+            compile(librarys.tbapply) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isMonitorModule.toBoolean()) {
+        compile project(':commonBusinessModule:monitormodule')
+    } else {
+        if (!isMonitorModule.equals("code")) {
+            compile(librarys.monitor) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isAttendanceModule.toBoolean()) {
+        compile project(':commonBusinessModule:attendancemodule')
+    } else {
+        if (!isAttendanceModule.equals("code")) {
+            compile(librarys.attendance) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCarTrackModule.toBoolean()) {
+        compile project(':commonBusinessModule:cartrack')
+    } else {
+        if (!isCarTrackModule.equals("code")) {
+            compile(librarys.cartrack) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCustomInfoModule.toBoolean()) {
+        compile project(':commonBusinessModule:customInfomodule')
+    } else {
+        if (!isCustomInfoModule.equals("code")) {
+            compile(librarys.custominfo) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCustomOrderModule.toBoolean()) {
+        compile project(':commonBusinessModule:customordermodule')
+    } else {
+        if (!isCustomOrderModule.equals("code")) {
+            compile(librarys.customorder) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isParkingModule.toBoolean()) {
+        compile project(':commonBusinessModule:parkingmodule')
+    }
+
+    if (isKeyCabinetModule.toBoolean()) {
+        compile project(':commonBusinessModule:keycabinet')
+    } else {
+        if (!isKeyCabinetModule.equals("code")) {
+            compile(librarys.keycabinet) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isCustomSettlementModule.toBoolean()) {
+        compile project(':commonBusinessModule:settlement')
+    } else {
+        if (!isCustomSettlementModule.equals("code")) {
+            compile(librarys.settlement) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isInvoiceManagementModule.toBoolean()) {
+        compile project(':commonBusinessModule:invoicemanagement')
+    }else{
+        if (!isInvoiceManagementModule.equals("code")) {
+            compile(librarys.invoicemanagement) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+    if (isNewOneKeyModule.toBoolean()) {
+        compile project(':commonBusinessModule:newonekey')
+    } else {
+        if (!isNewOneKeyModule.equals("code")) {
+            compile(librarys.newonekey) {
+                exclude module: 'baseutillib'
+            }
+        }
+    }
+}
