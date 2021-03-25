@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/assets_color_F5F6FA"
+    android:orientation="vertical"
+    tools:context=".activity.check.EquipmentTypeSearchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/T4"
+        android:paddingTop="@dimen/paddingsize2"
+        android:paddingRight="@dimen/T4">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <AutoCompleteTextView
+                android:id="@+id/query"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/assets_bg_white4"
+                android:completionThreshold="1"
+                android:drawableStart="@mipmap/assets_search_new"
+                android:drawableLeft="@mipmap/assets_search_new"
+                android:drawablePadding="@dimen/px18"
+                android:hint="@string/assets_equip_type_hint1"
+                android:imeOptions="actionSearch"
+                android:maxLength="20"
+                android:paddingLeft="@dimen/T2"
+                android:paddingTop="@dimen/space_10dp"
+                android:paddingBottom="@dimen/space_10dp"
+                android:singleLine="true"
+                android:textColor="@color/c7"
+                android:textColorHint="@color/assets_color_B0B3BE"
+                android:textSize="@dimen/smalltextsize" />
+
+            <ImageButton
+                android:id="@+id/search_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@null"
+                android:padding="6dp"
+                android:src="@drawable/search_clear"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/T4"
+            android:gravity="center_vertical"
+            android:text="@string/assets_cancel"
+            android:textColor="@color/assets_color_272848"
+            android:textSize="@dimen/textPx42" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/px75"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:divider="@android:color/transparent"
+            android:scrollbars="none" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/assets_bg_blue3"
+            android:gravity="center"
+            android:paddingLeft="@dimen/px102"
+            android:paddingTop="@dimen/space_10dp"
+            android:paddingRight="@dimen/px102"
+            android:paddingBottom="@dimen/space_10dp"
+            android:layout_marginLeft="@dimen/T4"
+            android:layout_marginRight="@dimen/T4"
+            android:layout_marginBottom="@dimen/px24"
+            android:text="@string/assets_sure"
+            android:textColor="@color/assets_color_FFFFFF"
+            android:textSize="@dimen/middeltextsize"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
