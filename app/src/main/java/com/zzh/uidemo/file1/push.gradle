@@ -1,0 +1,57 @@
+package com.zzh.uidemo.file1
+
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.artifactory'
+// 将源码打包为Jar包
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+artifacts {
+    archives androidSourcesJar
+}
+def config = project.publication
+def ARTIFACTID = config.ARTIFACTID
+def ARTIFACTVERSION  = config.ARTIFACTVERSION
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId 'com.hmfl.careasy'
+            artifactId = ARTIFACTID
+            version = ARTIFACTVERSION
+
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            artifact(androidSourcesJar)
+
+            // 生成pom.xml文件
+            pom.withXml {
+                def dependencies = asNode().appendNode('dependencies')
+                configurations.getByName("releaseCompileClasspath").getResolvedConfiguration().getFirstLevelModuleDependencies().each {
+                    def dependency = dependencies.appendNode('dependency')
+                    dependency.appendNode('groupId', it.moduleGroup)
+                    dependency.appendNode('artifactId', it.moduleName)
+                    dependency.appendNode('version', it.moduleVersion)
+                }
+            }
+        }
+    }
+}
+
+// 远程仓库服务相关配置
+artifactory {
+    contextUrl = 'http://172.16.105.25:7777/artifactory/'
+    publish {
+        repository {
+            repoKey = 'libs-release-local'  // 要上传的库名
+            username = "izkml"  // 远程仓库账号
+            password = "wlw123456"  // 远程仓库密码
+            maven = true
+        }
+        defaults {
+            publications('aar')
+            publishArtifacts = true
+            properties = ['qa.level': 'basic', 'dev.team': 'core']
+            publishPom = true
+        }
+    }
+}

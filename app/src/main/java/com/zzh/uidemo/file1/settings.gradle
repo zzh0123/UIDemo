@@ -1,0 +1,159 @@
+package com.zzh.uidemo.file1
+
+include ':app',
+        ':coreManagerModule:aroutermodule',
+        ':baseFunctionModule:scanlibrary',
+        ':baseFunctionModule:easeui',
+        ':baseFunctionModule:library',
+        ':baseFunctionModule:baseutillib'
+if(isUdeskModule.toBoolean()){
+    include  ':baseFunctionModule:UdeskSDKUI'
+}
+if(isGongcheModule.toBoolean()){
+    include ':commonBusinessModule:gongchemudule'
+}
+if(isLivePigModule.toBoolean()){
+    include ':commonBusinessModule:livepigmodule'
+}
+if (isWanjiaCampsite.toBoolean()) {
+    include ':commonBusinessModule:wanjiamoudle'
+}
+if (isScheduledBusModule.toBoolean()) {
+    include  ':commonBusinessModule:scheduledbus'
+}
+if (isDriverTaskModule.toBoolean()) {
+    include ':commonBusinessModule:drivertask'
+}
+if (isWeiBaoModule.toBoolean()) {
+    include ':commonBusinessModule:weibaomudule'
+}
+if (isRefuelingModule.toBoolean()) {
+    include ':commonBusinessModule:refueling'
+}
+if (isPersonalTravelModule.toBoolean()) {
+    include ':commonBusinessModule:personaltravel'
+}
+if (isReimbursementModule.toBoolean()) {
+    include ':commonBusinessModule:reimbursementmodule'
+}
+if (isOrganAffairsModule.toBoolean()) {
+    include ':commonBusinessModule:organaffairs'
+}
+if (isGongFangModule.toBoolean()) {
+    include ':commonBusinessModule:gongfang'
+}
+if (isAssetsModule.toBoolean()) {
+    include ':commonBusinessModule:assetsmodule'
+}
+if (isOfficialReceptions.toBoolean()) {
+    include ':commonBusinessModule:officialreceptions'
+}
+if (isVehicleStatistics.toBoolean()) {
+    include ':commonBusinessModule:vehiclestatistics'
+}
+if (isPersonalCarModule.toBoolean()) {
+    include ':commonBusinessModule:personalcar'
+}
+if (isBus.toBoolean()) {
+    include ':commonBusinessModule:bus'
+}
+if (isDispatchingModule.toBoolean()) {
+    include ':commonBusinessModule:dispatchingmodule'
+}
+if(isOneKeyModule.toBoolean()){
+    include ':commonBusinessModule:onekey'
+}
+if (isNewOneKeyModule.toBoolean()) {
+    include ':commonBusinessModule:newonekey'
+}
+if (isHolidayTravel.toBoolean()) {
+    include ':commonBusinessModule:holidaytravelmodule'
+}
+if (isTravelHelpModule.toBoolean()) {
+    include ':commonBusinessModule:travelhelpmodule'
+}
+if (isCheckModule.toBoolean()) {
+    include ':commonBusinessModule:checkmodule'
+}
+if (isDriverStatusModule.toBoolean()) {
+    include  ':commonBusinessModule:driverstatusmodule'
+}
+if (isCarRegistrationModule.toBoolean()) {
+    include  ':commonBusinessModule:carregistrationmodule'
+}
+if (isJiaoCheModule.toBoolean()) {
+    include ':commonBusinessModule:jiaochemodule'
+}
+if (isScheduledBusManagementModule.toBoolean()) {
+    include ':commonBusinessModule:scheduledbusmanagement'
+}
+if (isRealTimeLineModule.toBoolean()) {
+    include  ':commonBusinessModule:realtimelinemodule'
+}
+if (isCarStatusModule.toBoolean()) {
+    include ':commonBusinessModule:carstatusmodule'
+}
+if (isServicePointModule.toBoolean()) {
+    include ':commonBusinessModule:servicepointmodule'
+}
+if (isDriverMissionModule.toBoolean()) {
+    include ':commonBusinessModule:drivermissionmodule'
+}
+if (isOrderModule.toBoolean()) {
+    include ':commonBusinessModule:ordermodule'
+}
+if (isEmergencyModule.toBoolean()) {
+    include ':commonBusinessModule:emergencymodule'
+}
+if (isPerformanceModule.toBoolean()) {
+    include ':commonBusinessModule:performancemodule'
+}
+if (isComplaintModule.toBoolean()) {
+    include ':commonBusinessModule:complaintmodule'
+}
+if (isTrainingModule.toBoolean()) {
+    include ':commonBusinessModule:trainingmodule'
+}
+if (isEarlyWarningModule.toBoolean()) {
+    include ':commonBusinessModule:earlywarningmodule'
+}
+if (isAllocationModule.toBoolean()) {
+    include ':commonBusinessModule:allocationModule'
+}
+if (isEstablishManageModule.toBoolean()) {
+    include ':commonBusinessModule:establishmanage'
+}
+if (isApplyCarModule.toBoolean()) {
+    include ':commonBusinessModule:applycarmodule'
+}
+if (isTbApplyModule.toBoolean()) {
+    include ':commonBusinessModule:tbapplymodule'
+}
+if (isMonitorModule.toBoolean()) {
+    include ':commonBusinessModule:monitormodule'
+}
+if(isAttendanceModule.toBoolean()){
+    include ':commonBusinessModule:attendancemodule'
+}
+if(isCarTrackModule.toBoolean()){
+    include ':commonBusinessModule:cartrack'
+}
+if(isCustomInfoModule.toBoolean()){
+    include ':commonBusinessModule:customInfomodule'
+}
+if(isCustomOrderModule.toBoolean()){
+    include ':commonBusinessModule:customordermodule'
+}
+if(isKeyCabinetModule.toBoolean()){
+    include ':commonBusinessModule:keycabinet'
+}
+
+if(isCustomSettlementModule.toBoolean()){
+    include ':commonBusinessModule:settlement'
+}
+if(isInvoiceManagementModule.toBoolean()){
+    include ':commonBusinessModule:invoicemanagement'
+}
+if(isParkingModule.toBoolean()){
+    include ':commonBusinessModule:parkingmodule'
+}
